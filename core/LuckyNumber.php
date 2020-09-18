@@ -9,6 +9,7 @@ namespace Core;
 class LuckyNumber
 {
     const ITERATION_BORDER = 3;
+    const BORDER_NUMBER = 6;
 
     /**
      * Getting a lucky ticket number
@@ -22,7 +23,7 @@ class LuckyNumber
         if (is_array($getData) && !empty($getData) && array_key_exists('first', $getData) && array_key_exists('end', $getData)) {
             $firstNumber = $getData['first'];
             $EndNumber = $getData['end'];
-            if (count($this->getListOfNumber($firstNumber)) <= 6 && count($this->getListOfNumber($EndNumber))  <= 6) {
+            if (count($this->getListOfNumber($firstNumber)) <= self::BORDER_NUMBER && count($this->getListOfNumber($EndNumber)) <= self::BORDER_NUMBER) {
                 if ($firstNumber > $EndNumber && ($firstNumber - $EndNumber) > 100) {
                     for ($numberI = $EndNumber; $numberI <= $firstNumber; $numberI++) {
                         if ($response = $this->getCheckOnIdentity($numberI))
@@ -119,7 +120,7 @@ class LuckyNumber
      */
     private function getCheckOnIdentity(int $number)
     {
-        if(count($this->getListOfNumber($number)) == 6) {
+        if (count($this->getListOfNumber($number)) == self::BORDER_NUMBER) {
             return $this->getIntFirstThree($number) == $this->getIntEndThree($number) ? $number : false;
         }
         return false;
