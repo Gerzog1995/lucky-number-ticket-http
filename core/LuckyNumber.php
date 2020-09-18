@@ -46,6 +46,16 @@ class LuckyNumber
     }
 
     /**
+     * Get the count of lucky ticket
+     * @param array $listLuckyNumbers
+     * @return array
+     */
+    public function getCountLuckyTicket(array $listLuckyNumbers): int
+    {
+        return count($listLuckyNumbers);
+    }
+
+    /**
      * Get the list of numbers.
      * @param integer $number
      * @return array
@@ -113,7 +123,6 @@ class LuckyNumber
             return $this->getIntFirstThree($number) == $this->getIntEndThree($number) ? $number : false;
         }
         return false;
-
     }
 
 }
