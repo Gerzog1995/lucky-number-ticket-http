@@ -22,7 +22,7 @@ class LuckyNumber
         if (is_array($getData) && !empty($getData) && array_key_exists('first', $getData) && array_key_exists('end', $getData)) {
             $firstNumber = $getData['first'];
             $EndNumber = $getData['end'];
-            if (count($this->getListOfNumber($firstNumber)) <= 6 || count($this->getListOfNumber($EndNumber))  <= 6) {
+            if (count($this->getListOfNumber($firstNumber)) <= 6 && count($this->getListOfNumber($EndNumber))  <= 6) {
                 if ($firstNumber > $EndNumber && ($firstNumber - $EndNumber) > 100) {
                     for ($numberI = $EndNumber; $numberI <= $firstNumber; $numberI++) {
                         if ($response = $this->getCheckOnIdentity($numberI))
@@ -44,7 +44,7 @@ class LuckyNumber
         }
         throw new \Exception('Array processing error!');
     }
-    
+
     /**
      * Get the list of numbers.
      * @param integer $number
@@ -115,5 +115,5 @@ class LuckyNumber
         return false;
 
     }
-    
+
 }
